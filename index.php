@@ -36,11 +36,21 @@
     <title>Todo app(php)</title>
 </head>
 <body>
-    <div>   
-        <form  action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST">
-            <input type="text" name="todo" >
-            <input type="submit" value="add todo" >
-        </form>
+    <div> 
+        <div>
+            <h1>Search Todo</h1>
+            <form action="search.php" method="POST">
+                 <input type="text" name="search" >
+                 <input type="submit" value="go" >
+            </form>
+        </div>
+        <div>
+            <h1>Add Todo</h1>
+            <form  action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST">
+                <input type="text" name="todo" >
+                <input type="submit" value="add todo" >
+            </form>
+        </div>
         <ul>
             <?php
               while($row = mysqli_fetch_assoc($res)) {
@@ -49,7 +59,8 @@
             ?>
             <li>
                 <?php echo $t_name; ?>
-                <a href="index.php?delete_todo=<?php echo $t_id; ?>">delete</a>
+                 <a href="edit.php?edit_todo=<?php echo $t_id; ?>" >edit</a>
+                 <a href="index.php?delete_todo=<?php echo $t_id; ?>">delete</a>
             </li>
             <?php } ?>
         </ul>
